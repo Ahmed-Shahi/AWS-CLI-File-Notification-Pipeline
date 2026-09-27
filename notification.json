@@ -1,0 +1,10 @@
+{
+  "QueueConfigurations": [
+    {
+      "QueueArn": "arn:aws:sqs:ap-southeast-1:061578311627:file-pipeline-queue",
+      "Events": [
+        "s3:ObjectCreated:*"
+      ]
+    }
+  ]
+}

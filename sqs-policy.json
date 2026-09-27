@@ -1,0 +1,23 @@
+{
+  "Version": "2012-10-17",
+  "Id": "S3EventsToSQSPolicy",
+  "Statement": [
+    {
+      "Sid": "AllowS3ToSendMessage",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "s3.amazonaws.com"
+      },
+      "Action": "sqs:SendMessage",
+      "Resource": "arn:aws:sqs:ap-southeast-1:061578311627:file-pipeline-queue",
+      "Condition": {
+        "ArnEquals": {
+          "aws:SourceArn": "arn:aws:s3:::file-pipeline-bucket-061578311627"
+        },
+        "StringEquals": {
+          "aws:SourceAccount": "061578311627"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "CloudWatchLogs",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:ap-southeast-1:061578311627:log-group:/aws/lambda/ProcessS3EventNotification:*"
+    },
+    {
+      "Sid": "S3ObjectRead",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:GetObjectAttributes"
+      ],
+      "Resource": "arn:aws:s3:::file-pipeline-bucket-061578311627/*"
+    },
+    {
+      "Sid": "SQSConsume",
+      "Effect": "Allow",
+      "Action": [
+        "sqs:ReceiveMessage",
+        "sqs:DeleteMessage",
+        "sqs:GetQueueAttributes"
+      ],
+      "Resource": "arn:aws:sqs:ap-southeast-1:061578311627:file-pipeline-queue"
+    },
+    {
+      "Sid": "SNSPublish",
+      "Effect": "Allow",
+      "Action": "sns:Publish",
+      "Resource": "arn:aws:sns:ap-southeast-1:061578311627:file-pipeline-topic"
+    }
+  ]
+}

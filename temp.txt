@@ -1,0 +1,5 @@
+1. S3
+2. SQS
+3. IAM role
+4. Topic
+5. 
